@@ -4,6 +4,8 @@ use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
 
+namespace behat4eve2Plugin\features\bootstrap;
+
 /**
  * Defines application features from the specific context.
  */
@@ -25,9 +27,11 @@ class FeatureContext implements Context
     */
     public function aBehatInstallation()
     {
-        PHPUnit_Framework_Assert::assertTrue(true);
+        $t = sfContext::getInstance()->getUser()->getId();
+
+        PHPUnit_Framework_Assert::assertEquals(1, $t);
     }
- 
+
     /**
     * @When I launch a Test
     */
